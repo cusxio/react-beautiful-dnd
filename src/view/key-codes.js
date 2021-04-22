@@ -11,3 +11,5 @@ export const arrowLeft: number = 37;
 export const arrowUp: number = 38;
 export const arrowRight: number = 39;
 export const arrowDown: number = 40;
+export const j: number = 74;
+export const k: number = 75;

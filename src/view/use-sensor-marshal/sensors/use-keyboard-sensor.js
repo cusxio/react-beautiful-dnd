@@ -59,19 +59,19 @@ function getDraggingBindings(
         if (event.keyCode === keyCodes.space) {
           // need to stop parent Draggable's thinking this is a lift
           event.preventDefault();
-          drop();
+          // drop();
           return;
         }
 
         // Movement
 
-        if (event.keyCode === keyCodes.arrowDown) {
+        if ([keyCodes.j, keyCodes.arrowDown].indexOf(event.keyCode) >= 0) {
           event.preventDefault();
           actions.moveDown();
           return;
         }
 
-        if (event.keyCode === keyCodes.arrowUp) {
+        if ([keyCodes.k, keyCodes.arrowUp].indexOf(event.keyCode) >= 0) {
           event.preventDefault();
           actions.moveUp();
           return;
@@ -96,6 +96,16 @@ function getDraggingBindings(
         }
 
         preventStandardKeyEvents(event);
+      },
+    },
+    {
+      eventName: 'keyup',
+      fn: (event: KeyboardEvent) => {
+        // Dropping
+        if (event.keyCode === keyCodes.space) {
+          event.preventDefault();
+          drop();
+        }
       },
     },
     // any mouse actions kills a drag
